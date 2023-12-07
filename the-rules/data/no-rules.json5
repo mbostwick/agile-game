@@ -7,5 +7,13 @@
   // You may want to know why someone needs branches if there are no rules, well its a story about time
   // if I had more time I would explain it, but I'm still working on the rules of math, which are not so much rules as ...
   // sorry that may have been a rant there, keep going, and just define your own truth.
+  ruleOne: {
+    active: true,
+    parameters : [
+     "many different string statements allowed",
+     "we can propose any type of rule, like a rule to allow rules into the repo based on consensus",
+     "typically this should contain single statements of fact, with one instance of it in action as an example",
+    ],
+  },
   followed: false,
 }
