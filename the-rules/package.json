@@ -1,0 +1,27 @@
+{
+  "name": "agile-game-rules",
+  "version": "1.0.0",
+  "description": "The rules for being agile!",
+  "main": "read.js",
+  "scripts": {
+    "read": "node read.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbostwick/agile-game.git"
+  },
+  "keywords": [
+    "agile"
+  ],
+  "author": "human",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbostwick/agile-game/issues"
+  },
+  "homepage": "https://github.com/mbostwick/agile-game#readme",
+  "dependencies": {
+    "json5": "^2.2.3"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  name: "the-first-rule",
+  description: "there are no rules..",
+  // you should likely change this to true, but I'm not sure if any branches will allow this
+  // I mean to play the game you have to do something right ?
+  // I mean maybe reading comments is fun, but I don't think so, I think the goal is to get branches
+  // You may want to know why someone needs branches if there are no rules, well its a story about time
+  // if I had more time I would explain it, but I'm still working on the rules of math, which are not so much rules as ...
+  // sorry that may have been a rant there, keep going, and just define your own truth.
+  followed: false,
+}
