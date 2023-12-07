@@ -16,3 +16,4 @@
 - Maybe add [chalk](https://www.npmjs.com/package/chalk) and have fun..
 - add stuff here, but who is really going to create a branch ? 
 - test things ? I mean I feel like this game is a test.. 
+- https://en.wikipedia.org/wiki/Nomic
