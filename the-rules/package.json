@@ -4,7 +4,7 @@
   "description": "The rules for being agile!",
   "main": "read.js",
   "scripts": {
-    "read": "node read.js",
+    "read": "npx ts-node --esm .\\read.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -23,5 +23,11 @@
   "homepage": "https://github.com/mbostwick/agile-game#readme",
   "dependencies": {
     "json5": "^2.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   }
 }

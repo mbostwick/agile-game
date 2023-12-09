@@ -1,28 +1,39 @@
-import JSON5 from 'json5'
+import JSON5 from "json5";
 import { resolve } from 'path';
 import { readdirSync, readFileSync } from "fs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-function userFollowedRule(rule){
+export interface Rule {
+    description?: string
+    name?: string
+    followed?: boolean
+}
+
+function userFollowedRule(rule: Rule): boolean{
     console.log(rule.description)
     console.log(rule.name, "has now been read..")
     return rule.followed;
 }
 
+function getRule(fPath: string): Rule{
+    const fText = readFileSync(fPath)
+    return JSON5.parse(fText.toString());
+}
 
 
-async function* getFiles(dir) {
+async function* getFiles(dir: string): AsyncGenerator<Rule> {
     const dirsRead = readdirSync(dir, { withFileTypes: true });
     for (const dirent of dirsRead) {
         const res = resolve(dir, dirent.name);
         if (dirent.isDirectory()) {
             yield* getFiles(res);
         } else {
-            yield res;
+            yield getRule(res);
         }
     }
 }
+
 
 let someoneWonTheGame = true;
 try{
@@ -33,13 +44,12 @@ try{
         someoneWonTheGame = false;
     }
     if(someoneWonTheGame) {
+        console.log("hello");
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = dirname(__filename);
-        const theFiles = await getFiles(`${__dirname}\\data`);
-        for await (const fPath of theFiles) {
-            const fText = readFileSync(fPath)
-            const rules = JSON5.parse(fText);
-            if(!userFollowedRule(rules)){
+        const theRules = await getFiles(`${__dirname}\\data`);
+        for await (const givenRule of theRules) {
+            if(!userFollowedRule(givenRule)){
                 someoneWonTheGame = false;
             }
         }
