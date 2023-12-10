@@ -1,6 +1,11 @@
 {
   name: "the-first-rule",
-  description: "there are no rules..",
+  description: "there are no rules, but change is constant.",
+  steps: [
+    {
+      kind: "read-if-not-followed",
+    }
+  ],
   // you should likely change this to true, but I'm not sure if any branches will allow this
   // I mean to play the game you have to do something right ?
   // I mean maybe reading comments is fun, but I don't think so, I think the goal is to get branches

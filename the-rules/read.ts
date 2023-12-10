@@ -1,19 +1,33 @@
 import JSON5 from "json5";
 import { resolve } from 'path';
-import { readdirSync, readFileSync } from "fs";
+import { readdirSync, readFileSync, existsSync } from "fs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import {Rule} from "./archetype/Rule.js";
 
-export interface Rule {
-    description?: string
-    name?: string
-    followed?: boolean
-}
 
 function userFollowedRule(rule: Rule): boolean{
-    console.log(rule.description)
-    console.log(rule.name, "has now been read..")
-    return rule.followed;
+    let followed = rule.followed;
+    if(rule?.steps?.findIndex(x=> x.kind === "read") >= 0) {
+        console.log(rule.description)
+        console.log(rule.name, "has now been read..")
+    }
+    const indexOfHasFile = rule?.steps.findIndex(x => x.kind === "has-file");
+    if(indexOfHasFile >= 0){
+        followed = false;
+        const fileOptionIndex = rule.steps[indexOfHasFile].options?.findIndex(x => x.kind === "file")
+        if(fileOptionIndex >= 0){
+            followed = existsSync(rule.steps[indexOfHasFile].options[fileOptionIndex].text);
+        }
+    }
+    if(!followed){
+        const indexOfReadIfNotFollowed = rule?.steps.findIndex(x => x.kind === "read-if-not-followed");
+        if(indexOfReadIfNotFollowed >= 0){
+            console.log(`${rule.name} was not followed`)
+            console.log(rule.description)
+        }
+    }
+    return followed;
 }
 
 function getRule(fPath: string): Rule{
@@ -44,7 +58,6 @@ try{
         someoneWonTheGame = false;
     }
     if(someoneWonTheGame) {
-        console.log("hello");
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = dirname(__filename);
         const theRules = await getFiles(`${__dirname}\\data`);

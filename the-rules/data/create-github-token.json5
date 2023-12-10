@@ -1,0 +1,20 @@
+{
+  name: "create a github token",
+  description: "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo",
+  steps: [
+    {
+      kind: "has-file",
+      options: [
+        {
+          "name":"https://github.com/settings/tokens/new?scopes=repo",
+          "text": "..\\git.token",
+          "kind":"file",
+        }
+      ]
+    },
+    {
+      kind: "read-if-not-followed"
+    }
+  ],
+  followed: true
+}

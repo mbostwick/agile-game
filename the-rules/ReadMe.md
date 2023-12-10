@@ -5,4 +5,5 @@
 ## Next Steps
 - `npm install`
 - `npm run read`
-- Add rules, and create a branch...
+  - then read, make choices, and complete steps
+- `npm run do-agile`

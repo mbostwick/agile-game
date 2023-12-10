@@ -4,7 +4,8 @@
   "description": "The rules for being agile!",
   "main": "read.js",
   "scripts": {
-    "read": "npx ts-node --esm .\\read.ts",
+    "read": "npx ts-node --esm read.ts",
+    "agile": "npx ts-node --esm do-agile.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -22,10 +23,15 @@
   },
   "homepage": "https://github.com/mbostwick/agile-game#readme",
   "dependencies": {
-    "json5": "^2.2.3"
+    "@inkjs/ui": "^1.0.0",
+    "ink": "^4.4.1",
+    "json5": "^2.2.3",
+    "octokit": "^3.1.2",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
+    "@types/react": "^18.2.42",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3"
