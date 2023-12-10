@@ -6,4 +6,4 @@
 - `npm install`
 - `npm run read`
   - then read, make choices, and complete steps
-- `npm run do-agile`
+- `npm run agile`

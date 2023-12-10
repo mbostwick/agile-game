@@ -1,5 +1,5 @@
 {
-  name: "create a github token",
+  name: "create a github token and put it in a file named git.token at the project top level",
   description: "Create a personal access token at https://github.com/settings/tokens/new?scopes=repo",
   steps: [
     {
