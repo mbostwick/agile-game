@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {render, Box, useApp } from 'ink';
 import {Select} from '@inkjs/ui';
 import {NewIssue} from "./components/NewIssue.js";
@@ -17,7 +17,7 @@ function mapTextToChoice(text: string): agile_choices {
         }
     }
 }
-const ChoiceDisplay = () => {
+function ChoiceDisplay(){
     const {exit} = useApp();
     const [choice, setMadeChoice] = useState<agile_choices>("start");
     const handleChoice = (newValue: agile_choices) => {
@@ -46,12 +46,14 @@ const ChoiceDisplay = () => {
                 }}
             />
         </Box> }
-        {choice === "new-ticket" && <Box>
+        {choice === "new-ticket" ? (<Box>
             <NewIssue back={() => { (setMadeChoice("start")) }} />
-        </Box>}
+        </Box>) : null}
         <Box height={1} />
         <Box height={1} />
     </Box>
-};
+}
+const ui = <ChoiceDisplay />;
+const result = render(ui, {debug: true,});
+await result.waitUntilExit()
 
-render(<ChoiceDisplay />)

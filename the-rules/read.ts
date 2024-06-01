@@ -3,31 +3,32 @@ import { resolve } from 'path';
 import { readdirSync, readFileSync, existsSync } from "fs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import {Rule} from "./archetype/Rule.js";
+import type {Rule} from "./archetype/Rule.js";
 
 
 function userFollowedRule(rule: Rule): boolean{
     let followed = rule.followed;
-    if(rule?.steps?.findIndex(x=> x.kind === "read") >= 0) {
+    if((rule?.steps??[]).findIndex(x=> x.kind === "read") >= 0) {
         console.log(rule.description)
         console.log(rule.name, "has now been read..")
     }
-    const indexOfHasFile = rule?.steps.findIndex(x => x.kind === "has-file");
-    if(indexOfHasFile >= 0){
+    const indexOfHasFile = (rule?.steps ??[]).findIndex(x => x.kind === "has-file");
+    if(rule?.steps && indexOfHasFile >= 0){
         followed = false;
-        const fileOptionIndex = rule.steps[indexOfHasFile].options?.findIndex(x => x.kind === "file")
+        const options = rule.steps[indexOfHasFile].options ??[];
+        const fileOptionIndex = options.findIndex(x => x.kind === "file")
         if(fileOptionIndex >= 0){
-            followed = existsSync(rule.steps[indexOfHasFile].options[fileOptionIndex].text);
+            followed = existsSync(options[fileOptionIndex].text);
         }
     }
-    if(!followed){
+    if(rule?.steps && !followed){
         const indexOfReadIfNotFollowed = rule?.steps.findIndex(x => x.kind === "read-if-not-followed");
         if(indexOfReadIfNotFollowed >= 0){
             console.log(`${rule.name} was not followed`)
             console.log(rule.description)
         }
     }
-    return followed;
+    return followed ?? false;
 }
 
 function getRule(fPath: string): Rule{

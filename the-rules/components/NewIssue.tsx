@@ -1,7 +1,7 @@
 import {readFileSync} from "fs";
-import {Ticket} from "../archetype/Ticket.js";
+import type {Ticket} from "../archetype/Ticket.js";
 import {Octokit} from "octokit";
-import React, {useState} from "react";
+import {useState} from "react";
 import { Box, Text } from 'ink';
 import {Select, TextInput} from '@inkjs/ui';
 function getToken(): string {

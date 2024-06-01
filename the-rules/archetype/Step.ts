@@ -2,12 +2,12 @@
 export type KnownSteps = "read" | "has-file" | "read-if-not-followed";
 
 export type OptionInputType = "file" | "literal";
-export interface StepOption {
+export type StepOption = {
     name: string
     text: string
     kind: OptionInputType
 }
-export interface Step {
+export type Step  = {
     kind: KnownSteps
     options?: StepOption[]
 }
