@@ -1,5 +1,6 @@
 ## Overview
 - [Install Deno](https://docs.deno.com/runtime/manual/getting_started/installation)
+- read the readme in the section you care about, right now there are only rules.
  
 ## Contribute?
 - Pr's are welcome but maintainers can do whatever they want
