@@ -1,7 +1,8 @@
-import {useState} from 'react';
+// @ts-ignore
+import React, {useState} from 'react';
 import {render, Box, useApp } from 'ink';
 import {Select} from '@inkjs/ui';
-import {NewIssue} from "./components/NewIssue.js";
+import {NewIssue} from "./components/NewIssue.tsx";
 
 
 export type agile_choices= "start" | "new-ticket" | "exit";

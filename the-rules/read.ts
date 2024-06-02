@@ -1,8 +1,8 @@
 import JSON5 from "json5";
-import { resolve } from 'path';
-import { readdirSync, readFileSync, existsSync } from "fs";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { resolve } from 'node:path';
+import { readdirSync, readFileSync, existsSync } from "node:fs";
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 import type {Rule} from "./archetype/Rule.js";
 
 
@@ -52,12 +52,6 @@ async function* getFiles(dir: string): AsyncGenerator<Rule> {
 
 let someoneWonTheGame = true;
 try{
-    const [major] = process.versions.node.split('.').map(Number)
-    if(major < 18){
-        console.log("so yah a dev saw you didn't have the right node version, but they didn't want to write a more complex way of reading files... " +
-            "your node version", major)
-        someoneWonTheGame = false;
-    }
     if(someoneWonTheGame) {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = dirname(__filename);
