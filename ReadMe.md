@@ -1,9 +1,6 @@
 ## Overview
-- install bun if you dont have it
-  - https://bun.sh/
-  - you can use node if you want but freedom comes at a cost, 
-- Iterate quickly. As such `bun iterate-quickly.js`
-
+- [Install Deno](https://docs.deno.com/runtime/manual/getting_started/installation)
+ 
 ## Contribute?
 - Pr's are welcome but maintainers can do whatever they want
 - If lawyers need to get involved the cost is likely too high

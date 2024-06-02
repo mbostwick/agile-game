@@ -26,7 +26,6 @@
     "removeComments": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["bun-types"],
   },
   "include": ["./"],
 }
