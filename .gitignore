@@ -2,3 +2,4 @@
 /.idea/*
 /the-rules/node_modules/*
 git.token
+/node_modules/*

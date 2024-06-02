@@ -1,6 +1,6 @@
-import {Step} from "./Step.js";
+import type {Step} from "./Step.ts";
 
-export interface Rule {
+export type Rule = {
     description?: string
     name?: string
     steps?: Step[]
